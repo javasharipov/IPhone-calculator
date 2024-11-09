@@ -1,0 +1,96 @@
+// Variables for color and layout
+$background-color: #000;
+$button-color: #333;
+$button-color-secondary: #a5a5a5;
+$button-color-operator: #f39c12;
+$text-color: #fff;
+$font-size: 24px;
+$button-size: 60px;
+$button-spacing: 12px;
+
+body {
+	background: linear-gradient(90deg, #1a1a1a, #000000);
+}
+.calculator {
+	width: 320px;
+	height: 520px;
+	background-color: $background-color;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+	margin: 170px auto;
+	font-family: Arial, sans-serif;
+	padding: $button-spacing;
+	border-radius: 20px;
+
+	// Display section
+	.display {
+		flex: 1;
+		background-color: $background-color;
+		padding: 20px;
+		display: flex;
+		align-items: center;
+		justify-content: flex-end;
+		box-sizing: border-box;
+
+		input[type='text'] {
+			width: 100%;
+			background-color: transparent;
+			border: none;
+			color: $text-color;
+			font-size: 48px;
+			text-align: right;
+			padding-right: 10px;
+			outline: none;
+			pointer-events: none; // Prevents user interaction with the display field
+		}
+	}
+
+	.buttons {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: $button-spacing;
+
+		input[type='button'] {
+			width: $button-size;
+			height: $button-size;
+			background-color: $button-color;
+			border: none;
+			color: $text-color;
+			font-size: $font-size;
+			border-radius: 50%; // Make buttons circular
+			cursor: pointer;
+			transition: background-color 0.3s;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			box-sizing: border-box;
+
+			&:hover {
+				background-color: darken($button-color, 10%);
+			}
+
+			&.secondary {
+				background-color: $button-color-secondary;
+
+				&:hover {
+					background-color: darken($button-color-secondary, 10%);
+				}
+			}
+
+			&.operator {
+				background-color: $button-color-operator;
+
+				&:hover {
+					background-color: darken($button-color-operator, 10%);
+				}
+			}
+
+			&.zero {
+				grid-column: span 2;
+				border-radius: 50px;
+				margin-left: 84px;
+			}
+		}
+	}
+}
